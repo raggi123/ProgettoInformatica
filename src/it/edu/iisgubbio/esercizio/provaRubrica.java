@@ -93,9 +93,9 @@ public class provaRubrica extends Application{
 	}
 
 	public void aggiungi() {
-		String codice=tfNome.getText();
-		String descrizione=tfCognome.getText();
-		String taglia=tfNumero.getText();
+		String nome=tfNome.getText();
+		String cognome=tfCognome.getText();
+		String numero=tfNumero.getText();
 		
 		
 		
@@ -104,7 +104,7 @@ public class provaRubrica extends Application{
 		
 		try {
 			flussoCaratteri = new FileWriter("ProgettoInformatica/src/it/edu/iisgubbio/esercizio/rubrica.csv", true);
-			flussoCaratteri.write(codice+";"+descrizione+";"+taglia+"\n");
+			flussoCaratteri.write(nome+";"+cognome+";"+numero+"\n");
 			flussoCaratteri.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
