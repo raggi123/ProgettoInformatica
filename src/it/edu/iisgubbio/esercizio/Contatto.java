@@ -7,7 +7,7 @@ public class Contatto {
 	String numeroTelefono;
 	
 	public Contatto(String riga) {
-		String[] pezzi = riga.split(",");
+		String[] pezzi = riga.split(";");
 		this.nome = pezzi[0];
 		this.cognome = pezzi[1];
 		this.numeroTelefono = pezzi[2];

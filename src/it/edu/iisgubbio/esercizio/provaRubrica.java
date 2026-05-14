@@ -63,7 +63,7 @@ public class provaRubrica extends Application{
 
 		FileReader flussoCaratteri;
 		try {
-			flussoCaratteri = new FileReader("ProgettoInformatica/src/it/edu/iisgubbio/esercizio/rubrica.csv");
+			flussoCaratteri = new FileReader("/Users/raggi/Desktop/rubrica.csv");
 			BufferedReader lettoreDiRighe = new BufferedReader(flussoCaratteri);
 			String rigaLetta;
 
@@ -90,22 +90,29 @@ public class provaRubrica extends Application{
 		}
 		bAggiungi.setOnAction(e -> aggiungi());
 
+
+
+		for(int i=0 ; i<dati.size(); i++ ) {
+			lista.getItems().add(dati.get(i).nome+" "+dati.get(i).cognome+" "+dati.get(i).numeroTelefono);
+
+		}
+
 	}
+
 
 	public void aggiungi() {
 		String nome=tfNome.getText();
 		String cognome=tfCognome.getText();
 		String numero=tfNumero.getText();
-		
-		
-		
+
 		FileWriter flussoCaratteri;
-		
-		
+
+
 		try {
-			flussoCaratteri = new FileWriter("ProgettoInformatica/src/it/edu/iisgubbio/esercizio/rubrica.csv", true);
-			flussoCaratteri.write(nome+";"+cognome+";"+numero+"\n");
+			flussoCaratteri = new FileWriter("/Users/raggi/Desktop/rubrica.csv", true);
+			flussoCaratteri.write("\n"+nome+";"+cognome+";"+numero);
 			flussoCaratteri.close();
+			lista.getItems().add(nome+" "+cognome+" "+numero);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
