@@ -32,12 +32,15 @@ public class provaRubrica extends Application{
 	TextField tfNome =new TextField();
 	TextField tfCognome =new TextField();
 	TextField tfNumero =new TextField();
+	TextField tfRicerca =new TextField();
 
 	public void start(Stage finestra) throws Exception {
 		Label lNome =new Label("nome");
 		Label lCognome =new Label("cognome");
 		Label lNumero =new Label("numero");
 		Button bAggiungi=new Button("aggiungi");
+		Button bRimuovi=new Button("rimuovi");
+		Label lRicerca =new Label("ricerca");
 
 		GridPane griglia = new GridPane();
 
@@ -48,7 +51,10 @@ public class provaRubrica extends Application{
 		griglia.add(lNumero, 0, 2);
 		griglia.add(tfNumero, 1, 2);
 		griglia.add(bAggiungi, 0, 3);
-		griglia.add(lista, 0, 4);
+		griglia.add(bRimuovi, 1, 3);
+		griglia.add(lRicerca, 0, 4);
+		griglia.add(tfRicerca, 1, 4);
+		griglia.add(lista, 0, 5);
 
 
 		griglia.setVgap(20);
@@ -57,7 +63,7 @@ public class provaRubrica extends Application{
 
 		Scene scena = new Scene(griglia);
 
-		finestra.setTitle("Magazzino");
+		finestra.setTitle("RUBRICA TELEFONICA");
 		finestra.setScene(scena);
 		finestra.show();
 
@@ -89,8 +95,8 @@ public class provaRubrica extends Application{
 			e.printStackTrace();
 		}
 		bAggiungi.setOnAction(e -> aggiungi());
-
-
+		bRimuovi.setOnAction(e -> rimuovi());
+		tfRicerca.setOnAction(e -> ricerca());
 
 		for(int i=0 ; i<dati.size(); i++ ) {
 			lista.getItems().add(dati.get(i).nome+" "+dati.get(i).cognome+" "+dati.get(i).numeroTelefono);
@@ -119,6 +125,39 @@ public class provaRubrica extends Application{
 		}
 
 	}
+	
+	public void rimuovi() {
+		
+		
+	}
+	
+	public void ricerca() {
+	    
+	    lista.getItems().clear(); 
+	    String nomeRicercato = tfRicerca.getText();
+	    boolean trovato = false;
+	    
+	    	
+	    //devo mettere che se il tf della ricerca è 0 rimette tutti i contatti
+	    //da fare
+	    
+	    
+	    for(int i = 0; i < dati.size(); i++) {
+	        
+	        if(nomeRicercato.equalsIgnoreCase(dati.get(i).nome)) {
+	            trovato = true;
+	        } else {
+	            trovato = false;
+	        }
+	        if(trovato==true) {
+	            Contatto contatto = dati.get(i);
+	            lista.getItems().add(contatto.nome + " " + contatto.cognome + " " + contatto.numeroTelefono);
+	        } 
+	    }
+	}
+	
+	
+	
 
 
 
